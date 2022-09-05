@@ -25,10 +25,10 @@ body {
 
 .login-form {
     width: 300px;
-    border: 0;
     background-color: #EEEFF1;
     padding: 20px;
-    margin: 0 auto;
+    margin: auto;
+    border-radius: 10px;
 }
 
 .text-field {
