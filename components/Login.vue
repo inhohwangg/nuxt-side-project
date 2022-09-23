@@ -46,7 +46,7 @@ export default {
                 console.log(res.data)
                 console.log('로그인 성공')
                 // 페이지 전환해주는 부분
-                this.$router.push("/main")
+                this.$router.push("/userdata")
             })
             .catch((error)=> {
                 console.log(error,'로그인 실패')
