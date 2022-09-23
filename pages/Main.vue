@@ -1,17 +1,20 @@
 <template>
   <div>
     <Nav></Nav>
-    <SideBar />
+    <button @click="wordWrite">글 작성하기</button>
   </div>
 </template>
 
 <script>
 import Nav from "./Nav.vue";
-import SideBar from "./sidebar.vue";
 export default {
   components: {
     Nav,
-    SideBar,
+  },
+  methods: {
+    wordWrite() {
+      this.$router.push("/write");
+    },
   },
 };
 </script>

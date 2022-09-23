@@ -45,6 +45,8 @@ export default {
                 localStorage.setItem('access_token', token)
                 console.log(res.data)
                 console.log('로그인 성공')
+                // 페이지 전환해주는 부분
+                this.$router.push("/main")
             })
             .catch((error)=> {
                 console.log(error,'로그인 실패')
@@ -63,7 +65,7 @@ export default {
                 console.info(error)
                 console.info('로그인 체크 실패')
             })
-        }
+        },
     }
 }
 </script>
