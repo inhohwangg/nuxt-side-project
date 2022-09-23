@@ -12,6 +12,9 @@
         <p>제목 : <input v-model="comment" /></p>
         <button @click="commentWrite">댓글 작성 완료</button>
     </div>
+    <div>
+        <button @click="mypageRead">마이페이지 조회 버튼</button>
+    </div>
   </div>
 </template>
 
@@ -57,6 +60,7 @@ export default {
                 console.log(...a)
             })
         },
+        // 댓글작성하기
         commentWrite() {
             const host = 'http://13.125.96.150:3000/api/comment/write'
             let token = localStorage.getItem('access_token')
@@ -71,6 +75,21 @@ export default {
                 console.log('댓글생성 완료')
             })
         },
+        //마이페이지
+        mypageRead() {
+            const host = 'http://13.125.96.150:3000/api/post/mypage'
+            let token = localStorage.getItem('access_token')
+            axios.get(host,{
+                headers:{Authorization:`Bearer ${token}`}
+            })
+            .then((res)=> {
+                console.log(res)
+                console.log('마이페이지 조회 성공')
+            })
+            .catch((error)=> {
+                console.log(error,'마이페이지 조회 실패!')
+            })
+        }
     }
 };
 </script>
