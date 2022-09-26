@@ -8,6 +8,11 @@
 <script>
 import Nav from "./Nav.vue";
 export default {
+  data() {
+    return {
+      token:'',
+    }
+  },
   components: {
     Nav,
   },
