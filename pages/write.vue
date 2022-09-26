@@ -25,6 +25,12 @@
     <div>
         <button @click="removePost">게시글 삭제하기</button>
     </div>
+    <div>
+        <button @click="removeComment">댓글 삭제하기</button>
+    </div>
+    <div>
+        <button @click="commentRead">댓글 조회하기</button>
+    </div>
   </div>
 </template>
 
@@ -38,6 +44,7 @@ export default {
             comment:'',
             postId: 1,
             post_id: 1,
+            commentId:1,
         }
     },
     methods: {
@@ -154,19 +161,43 @@ export default {
                 console.log(error, '최신글 보여주기 실패!')
             })
         },
+        // 게시글 삭제하기
         removePost() {
-            const host = 'http://13.125.96.150:3000/api/post/delete'
+            const host = `http://13.125.96.150:3000/api/post/delete/${this.postId}`
             let token = localStorage.getItem('access_token')
-            let data = {
-                postId : this.postId
-            }
-            axios.delete(host,{headers:{Authorization:`Bearer ${token}`}},{data: {postId:this.postId}})
+            axios.delete(host,{headers:{Authorization:`Bearer ${token}`}})
             .then((res)=> {
                 console.log(res)
                 console.log('게시글 삭제 완료!')
             })
             .catch((error)=> {
                 console.log(error, '게시글 삭제 실패!')
+            })
+        },
+        // 댓글 삭제하기
+        removeComment() {
+            const host = `http://13.125.96.150:3000/api/comment/delete/${this.commentId}`
+            let token = localStorage.getItem('access_token')
+            axios.delete(host, {headers:{Authorization:`Bearer ${token}`}})
+            .then((res)=> {
+                console.log(res)
+                console.log('댓글 삭제하기 성공!')
+            })
+            .catch((error)=> {
+                console.log(error, '댓글삭제하기 실패!')
+            })
+        },
+        // 댓글 조회하기
+        commentRead() {
+            const host = `http://13.125.96.150:3000/api/post/${this.postId}`
+            let token = localStorage.getItem('access_token')
+            axios.delete(host, {headers:{Authorization:`Bearer ${token}`}})
+            .then((res)=> {
+                console.log(res)
+                console.log('댓글 조회하기 성공!')
+            })
+            .catch((error)=> {
+                console.log(error, '댓글 조회하기 실패!')
             })
         }
     }
